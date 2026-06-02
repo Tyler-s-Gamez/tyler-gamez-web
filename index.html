@@ -125,13 +125,14 @@
 
         .footer-logo {
             font-weight: 700;
-            font-size: 18px;
+            font-size: 16px;
             color: #ffffff;
         }
 
         .footer-links {
             display: flex;
             gap: 24px;
+            flex-wrap: wrap;
         }
 
         .footer-links a {
@@ -149,8 +150,20 @@
             text-align: center;
             padding-top: 20px;
             color: #5f6368;
-            font-size: 12px;
+            font-size: 13px;
             letter-spacing: 0.5px;
+        }
+
+        /* Custom link style for your name in the footer */
+        .creator-link {
+            color: rgb(253, 204, 54);
+            text-decoration: none;
+            font-weight: 600;
+            transition: text-decoration 0.2s;
+        }
+
+        .creator-link:hover {
+            text-decoration: underline;
         }
 
         /* Mobile Responsive adjustments */
@@ -158,6 +171,7 @@
             h1 { font-size: 40px; }
             header { padding: 20px; }
             .footer-content { flex-direction: column; gap: 20px; text-align: center; }
+            .footer-links { justify-content: center; gap: 15px; }
         }
     </style>
 </head>
@@ -182,15 +196,19 @@
     <!-- Professional Corporate-Style Footer -->
     <footer>
         <div class="footer-content">
-            <div class="footer-logo">© Tyler's Gamez</div>
+            <div class="footer-logo">© 2026 Tyler’s Gamez. All rights reserved.</div>
+            <!-- Added extra real website links like Status and Cookies -->
             <div class="footer-links">
                 <a href="#">Privacy Policy</a>
                 <a href="#">Terms of Service</a>
+                <a href="#">Cookie Settings</a>
+                <a href="#">Server Status</a>
                 <a href="#">Contact Support</a>
             </div>
         </div>
+        <!-- Your custom attribution link -->
         <div class="footer-bottom">
-            Designed to look legit. Powered by Vercel.
+            Powered by <a href="https://github.com/TylerGamerYT" target="_blank" class="creator-link">Tyler</a>
         </div>
     </footer>
 
