@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>System Status Hub - Tyler's Gamez</title>
+    
+    <!-- Relative path out of one subfolder back to assets -->
+    <link rel="icon" type="image/png" href="../assets/icons/TylerGamezIconV2.png">
+    
+    <style>
+        /* Reset & Base Styles */
+        * { 
+            margin: 0; 
+            padding: 0; 
+            box-sizing: border-box; 
+            font-family: 'Segoe UI', system-ui, sans-serif; 
+        }
+        
+        body { 
+            background-color: #0b0c10; 
+            color: #ffffff; 
+            min-height: 100vh; 
+            display: flex; 
+            flex-direction: column; 
+        }
+        
+        /* Navbar Header */
+        header { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            padding: 15px 40px; 
+            background: rgba(11, 12, 16, 0.8); 
+            backdrop-filter: blur(10px); 
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1); 
+        }
+        
+        .logo-container { 
+            display: flex; 
+            align-items: center; 
+            gap: 12px; 
+            text-decoration: none; 
+        }
+        
+        .nav-logo-img { 
+            width: 35px; 
+            height: 35px; 
+            border-radius: 6px; 
+        }
+        
+        .logo { 
+            font-size: 24px; 
+            font-weight: 800; 
+            color: rgb(253, 204, 54); 
+        }
+        
+        .back-btn { 
+            color: #c5c6c7; 
+            text-decoration: none; 
+            font-weight: 600; 
+            font-size: 15px; 
+            transition: color 0.2s; 
+        }
+        
+        .back-btn:hover { 
+            color: rgb(253, 204, 54); 
+        }
+
+        /* Main Container layout */
+        main { 
+            flex: 1; 
+            max-width: 800px; 
+            width: 100%; 
+            margin: 40px auto; 
+            padding: 0 20px; 
+        }
+        
+        .status-card { 
+            background: #12131a; 
+            border: 1px solid rgba(255, 255, 255, 0.05); 
+            border-radius: 12px; 
+            padding: 30px; 
+            margin-bottom: 24px; 
+        }
+        
+        .main-status-header { 
+            margin-bottom: 30px; 
+        }
+        
+        .main-status-header h1 { 
+            font-size: 28px; 
+            font-weight: 800; 
+        }
+        
+        /* Selection List Styles */
+        .hub-list {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            margin-top: 20px;
+        }
+
+        .hub-item { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            background: rgba(255, 255, 255, 0.02); 
+            border: 1px solid rgba(255, 255, 255, 0.05); 
+            padding: 20px; 
+            border-radius: 8px; 
+            text-decoration: none; 
+            color: white; 
+            transition: border-color 0.2s, transform 0.2s, background 0.2s; 
+        }
+        
+        .hub-item:hover { 
+            background: rgba(253, 204, 54, 0.01);
+            border-color: rgba(253, 204, 54, 0.3); 
+            transform: translateX(6px); 
+        }
+        
+        .bot-title { 
+            font-weight: 700; 
+            font-size: 18px; 
+            color: #ffffff;
+        }
+        
+        .bot-desc { 
+            font-size: 14px; 
+            color: #8f9296; 
+            margin-top: 4px; 
+        }
+        
+        .arrow-link { 
+            color: rgb(253, 204, 54); 
+            font-weight: 700;
+            font-size: 18px;
+        }
+
+        footer { 
+            background-color: #12131a; 
+            border-top: 1px solid rgba(255, 255, 255, 0.05); 
+            padding: 20px 40px; 
+            text-align: center; 
+            color: #5f6368; 
+            font-size: 13px; 
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="../" class="logo-container">
+            <img src="../assets/icons/TylerGamezIconV2.png" alt="Logo" class="nav-logo-img">
+            <div class="logo">Tyler's Gamez</div>
+        </a>
+        <a href="../" class="back-btn">← Back to Home</a>
+    </header>
+
+    <main>
+        <div class="status-card">
+            <div class="main-status-header">
+                <h1>System Status Monitor</h1>
+                <p style="color:#8f9296; font-size:15px; margin-top:6px;">Select an infrastructure group below to view live breakdowns and sub-networks.</p>
+            </div>
+
+            <div class="hub-list">
+                <!-- Bot 1 Selection Item -->
+                <a href="Bot1Hello/" class="hub-item">
+                    <div>
+                        <div class="bot-title">Bot1Hello Network</div>
+                        <div class="bot-desc">Global Hub, Regional European Networks, and localized modules.</div>
+                    </div>
+                    <span class="arrow-link">→</span>
+                </a>
+
+                <!-- Future placeholder items can go right under here if needed -->
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        © 2026 Tyler’s Gamez. All rights reserved.
+    </footer>
+
+</body>
+</html>
