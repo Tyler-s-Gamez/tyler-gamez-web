@@ -6,6 +6,8 @@
     <title>Tyler's Gamez</title>
     
     <link rel="icon" type="image/png" href="assets/icons/TylerGamezIconV2.png">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
         /* Reset & Base Styles */
@@ -135,7 +137,7 @@
             flex-wrap: wrap;
             max-width: 1200px;
             margin: 0 auto;
-            padding-bottom: 20px;
+            padding-bottom: 25px;
             border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         }
 
@@ -143,6 +145,33 @@
             font-weight: 700;
             font-size: 16px;
             color: #ffffff;
+        }
+
+        /* Social Icons Circle Layout styling */
+        .footer-socials {
+            display: flex;
+            gap: 16px;
+            align-items: center;
+        }
+
+        .social-circle {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 44px;
+            height: 44px;
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 50%;
+            color: #c5c6c7;
+            text-decoration: none;
+            font-size: 18px;
+            transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+        }
+
+        .social-circle:hover {
+            background-color: rgb(253, 204, 54);
+            color: #0b0c10;
+            transform: translateY(-3px);
         }
 
         .footer-links {
@@ -301,7 +330,8 @@
         @media (max-width: 768px) {
             h1 { font-size: 40px; }
             header { padding: 20px; }
-            .footer-content { flex-direction: column; gap: 20px; text-align: center; }
+            .footer-content { flex-direction: column; gap: 25px; text-align: center; }
+            .footer-socials { justify-content: center; }
             .footer-links { justify-content: center; gap: 15px; }
         }
     </style>
@@ -340,7 +370,6 @@
                     <div class="status-indicator">Operational</div>
                 </div>
                 
-                <!-- CHANGED THIS LINK: Now points to the selection hub directory screen instead of dropping 404 -->
                 <a href="status/" class="view-more-link">View Detailed Status Page →</a>
             </div>
         </div>
@@ -349,6 +378,22 @@
     <footer>
         <div class="footer-content">
             <div class="footer-logo">© 2026 Tyler’s Gamez. All rights reserved.</div>
+            
+            <div class="footer-socials">
+                <a href="https://www.youtube.com/@TylerGamez0" target="_blank" class="social-circle" title="YouTube">
+                    <i class="fa-brands fa-youtube"></i>
+                </a>
+                <a href="https://www.instagram.com/TylerGamez0" target="_blank" class="social-circle" title="Instagram">
+                    <i class="fa-brands fa-instagram"></i>
+                </a>
+                <a href="https://x.com/TylerGamez" target="_blank" class="social-circle" title="X (Twitter)">
+                    <i class="fa-brands fa-x-twitter"></i>
+                </a>
+                <a href="https://www.facebook.com/TylerGamez0" target="_blank" class="social-circle" title="Facebook">
+                    <i class="fa-brands fa-facebook-f"></i>
+                </a>
+            </div>
+
             <div class="footer-links">
                 <a href="#">Privacy Policy</a>
                 <a href="#">Terms of Service</a>
@@ -379,7 +424,5 @@
             }
         }
     </script>
-</body>
-</html>
 </body>
 </html>
