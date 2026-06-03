@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Games - Tyler's Gamez</title>
+    <link rel="icon" type="image/png" href="../assets/icons/TylerGamezIconV2.png">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, sans-serif;
+        }
+
+        body {
+            background-color: #0b0c10;
+            color: #ffffff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 40px;
+            background: rgba(11, 12, 16, 0.8);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .nav-logo-img {
+            width: 35px;
+            height: 35px;
+            border-radius: 6px;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 800;
+            color: rgb(253, 204, 54);
+        }
+
+        .nav-links a {
+            color: #c5c6c7;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 600;
+            padding: 8px 16px;
+        }
+
+        main {
+            flex: 1;
+            max-width: 1200px;
+            width: 100%;
+            margin: 120px auto 60px auto;
+            padding: 0 20px;
+        }
+
+        h1 {
+            font-size: 42px;
+            font-weight: 900;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+        
+        .games-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            justify-content: center;
+        }
+
+        .game-card {
+            background: #12131a;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+
+        .game-card:hover {
+            transform: translateY(-5px);
+            border-color: rgb(253, 204, 54);
+        }
+        
+        .banner-link {
+            display: block;
+            width: 100%;
+            height: 220px;
+            overflow: hidden;
+        }
+
+        .game-banner {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .game-info {
+            padding: 24px;
+        }
+
+        .game-title {
+            font-size: 26px;
+            font-weight: 800;
+            margin-bottom: 4px;
+            display: inline-block;
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .game-title:hover {
+            color: rgb(253, 204, 54);
+        }
+        
+        .game-author {
+            font-size: 14px;
+            color: #8f9296;
+            margin-bottom: 20px;
+        }
+
+        .game-author a {
+            color: rgb(253, 204, 54);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .game-author a:hover {
+            text-decoration: underline;
+        }
+        
+        .game-desc {
+            color: #c5c6c7;
+            font-size: 15px;
+            line-height: 1.6;
+            white-space: pre-line;
+            opacity: 0.9;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="../" class="logo-container">
+            <img src="../assets/icons/TylerGamezIconV2.png" alt="Logo" class="nav-logo-img">
+            <div class="logo">Tyler's Gamez</div>
+        </a>
+        <nav class="nav-links">
+            <a href="#">Our Games</a>
+        </nav>
+    </header>
+
+    <main>
+        <h1>Our Roblox Games</h1>
+        
+        <div class="games-grid">
+            <div class="game-card">
+                <!-- Clicking the banner photo takes you straight to the Roblox game page -->
+                <a href="https://www.roblox.com/games/106492363433124" target="_blank" class="banner-link">
+                    <img src="../assets/games/chair-banner.jpg" alt="Chair." class="game-banner">
+                </a>
+                <div class="game-info">
+                    <!-- Clicking the Chair title takes you straight to the Roblox game page -->
+                    <a href="https://www.roblox.com/games/106492363433124" target="_blank" class="game-title">Chair.</a>
+                    
+                    <!-- Clicking the creator name takes you straight to the Roblox group page -->
+                    <div class="game-author">By <a href="https://www.roblox.com/communities/403943992/Tyler-s-Gamez#!/about" target="_blank">@Tyler's Gamez</a></div>
+                    
+                    <!-- Your exact clean Description from the game page -->
+                    <p class="game-desc">Just a chair...
+Sitting on grass in the middle of nowhere.
+They say if you get too close, it takes you somewhere else.
+
+
+One player said:
+
+"THE CHAIR TOOK ME I DON'T KNOW WHERE I AM-"
+
+
+Be aware... THE CHAIR.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+</body>
+</html>
