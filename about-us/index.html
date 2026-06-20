@@ -47,12 +47,17 @@
             content: '?'; font-size: 36px; font-weight: 700; color: rgba(255, 255, 255, 0.15);
         }
 
-        /* Tester Badge / Custom Color Border variant */
-        .tester-pfp { border: 2px solid #2ecc71; }
+        /* Border frame colors for specific roles */
+        .tester-pfp { border: 2px solid #2ecc71; } /* Game Tester green */
+        .web-pfp { border: 2px solid #3498db; }    /* Web Tester blue */
 
         .founder-info h3 { font-size: 22px; font-weight: 700; color: #ffffff; margin-bottom: 6px; }
         .founder-title { font-size: 14px; color: rgb(253, 204, 54); font-weight: 600; text-transform: uppercase; margin-bottom: 12px; letter-spacing: 0.5px; }
-        .tester-title { color: #2ecc71; } /* Unique green accent for testing badge */
+        
+        /* Accent color details for testers */
+        .tester-title { color: #2ecc71; } 
+        .web-title { color: #3498db; }
+
         .founder-bio { font-size: 14.5px; color: #8f9296; line-height: 1.6; }
 
         @media (max-width: 600px) {
@@ -76,7 +81,7 @@
     <main>
         <div class="about-section">
             <h1>About Tyler's Gamez</h1>
-            <p class="mission-text">Welcome to the ultimate hub for our Roblox creations! We focus on creating unforgettable experiences from simple, community driven clickers to mysterious, interactive worlds. Thank you for playing and being part of our rapidly growing gaming community.</p>
+            <p class="mission-text">Welcome to the ultimate hub for our Roblox creations! We focus on creating unforgettable experiences—from simple, community-driven clickers to mysterious, interactive worlds. Thank you for playing and being part of our rapidly growing gaming community.</p>
             
             <hr>
             
@@ -99,7 +104,7 @@
                     <div class="founder-info">
                         <h3>Chloe</h3>
                         <div class="founder-title">Co-Founder</div>
-                        <p class="founder-bio">Chloe helps drive the vision and direction here at Tyler's Gamez. She handles behind the scenes work to keep everything running smoothly. Note: She mostly prefers not to be shown publicly, and we fully respect and allow that privacy!</p>
+                        <p class="founder-bio">Chloe helps drive the vision and direction here at Tyler's Gamez. She handles behind-the-scenes work to keep everything running smoothly. Note: She mostly prefers not to be shown publicly, and we fully respect and allow that privacy!</p>
                     </div>
                 </div>
 
@@ -110,6 +115,16 @@
                         <h3>Mil</h3>
                         <div class="founder-title tester-title">Official Game Tester</div>
                         <p class="founder-bio">Mil is the gatekeeper of quality control for our Roblox games and experiences. As one of the first ever players of our games and one of our original testers, she meticulously tracks down pesky bugs before updates roll out to the public, ensuring a smooth and fun experience for all players.</p>
+                    </div>
+                </div>
+
+                <!-- Fish's Card -->
+                <div class="founder-card">
+                    <div class="blank-pfp web-pfp"></div>
+                    <div class="founder-info">
+                        <h3>Fish</h3>
+                        <div class="founder-title web-title">Official Website Tester</div>
+                        <p class="founder-bio">Fish makes sure our web platform stays up, fast, and totally bulletproof. He clicks through every link, analyzes our pages, and aggressively tests the website(s) for glitches, broken buttons, or display bugs so that your browsing experience matches the quality of our games.</p>
                     </div>
                 </div>
             </div>
