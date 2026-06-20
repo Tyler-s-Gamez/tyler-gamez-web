@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - Page Missing - Tyler's Gamez</title>
+    <link rel="icon" type="image/png" href="/assets/icons/TylerGamezIconV2.png">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Roboto, sans-serif; }
+        body { 
+            background-color: #0b0c10; 
+            color: #ffffff; 
+            min-height: 100vh; 
+            display: flex; 
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Ambient Background Glow */
+        body::before {
+            content: '';
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: rgba(253, 204, 54, 0.05);
+            border-radius: 50%;
+            filter: blur(80px);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 0;
+        }
+        
+        .error-container {
+            position: relative;
+            z-index: 1;
+            max-width: 500px;
+        }
+
+        .error-code {
+            font-size: 108px;
+            font-weight: 900;
+            line-height: 1;
+            color: rgb(253, 204, 54);
+            letter-spacing: -2px;
+            margin-bottom: 10px;
+            text-shadow: 0px 4px 20px rgba(253, 204, 54, 0.2);
+            animation: pulse 3s infinite ease-in-out;
+        }
+
+        h1 {
+            font-size: 28px;
+            font-weight: 800;
+            margin-bottom: 16px;
+            color: #ffffff;
+        }
+
+        p {
+            font-size: 16px;
+            color: #c5c6c7;
+            line-height: 1.6;
+            margin-bottom: 35px;
+            opacity: 0.8;
+        }
+
+        .home-btn {
+            display: inline-block;
+            background: rgb(253, 204, 54);
+            color: #0b0c10;
+            padding: 14px 30px;
+            font-size: 16px;
+            font-weight: 700;
+            border-radius: 6px;
+            text-decoration: none;
+            transition: transform 0.2s, background-color 0.2s, box-shadow 0.2s;
+            box-shadow: 0 4px 15px rgba(253, 204, 54, 0.15);
+        }
+
+        .home-btn:hover {
+            background: #e5b525;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(253, 204, 54, 0.25);
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.02); opacity: 0.95; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="error-container">
+        <div class="error-code">404</div>
+        <h1>Game Over. Page Not Found.</h1>
+        <p>The link you followed might be broken, or the page may have been moved. Let's get you back into the action.</p>
+        <a href="/" class="home-btn">Return to Main Hub</a>
+    </div>
+
+</body>
+</html>

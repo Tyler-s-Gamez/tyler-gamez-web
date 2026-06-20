@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Terms of Service - Tyler's Gamez</title>
+<link rel="icon" type="image/png" href="../assets/icons/TylerGamezIconV2.png">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --yellow: rgb(253, 204, 54);
+    --yellow-dim: rgba(253, 204, 54, 0.1);
+    --bg: #08090d;
+    --surface: #0f1018;
+    --border: rgba(255,255,255,0.07);
+    --text: #ffffff;
+    --muted: #7a7d8a;
+    --body-text: #c0c2cc;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    overflow-x: hidden;
+  }
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(253,204,54,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(253,204,54,0.03) 1px, transparent 1px);
+    background-size: 60px 60px;
+    mask-image: radial-gradient(ellipse 100% 60% at 50% 0%, black, transparent);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 48px;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 100;
+    background: rgba(8,9,13,0.85);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border);
+  }
+  .logo-container { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+  .nav-logo-img { width: 32px; height: 32px; border-radius: 6px; object-fit: cover; }
+  .logo { font-family: 'Bebas Neue', sans-serif; font-size: 26px; letter-spacing: 2px; color: var(--yellow); }
+  .nav-links { display: flex; gap: 6px; }
+  .nav-links a {
+    color: var(--muted); text-decoration: none; font-size: 14px; font-weight: 500;
+    padding: 8px 16px; border-radius: 6px; transition: color 0.2s, background 0.2s;
+  }
+  .nav-links a:hover { color: var(--text); background: rgba(255,255,255,0.05); }
+
+  .page-wrap {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 140px 24px 100px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .page-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--yellow-dim);
+    border: 1px solid rgba(253,204,54,0.25);
+    color: var(--yellow);
+    padding: 5px 14px;
+    border-radius: 100px;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    margin-bottom: 24px;
+  }
+
+  .page-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(52px, 8vw, 80px);
+    line-height: 1;
+    letter-spacing: 1px;
+    margin-bottom: 12px;
+  }
+
+  .page-meta {
+    color: var(--muted);
+    font-size: 14px;
+    margin-bottom: 60px;
+    padding-bottom: 40px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .policy-section { margin-bottom: 48px; }
+
+  .section-number {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 13px;
+    letter-spacing: 3px;
+    color: var(--yellow);
+    margin-bottom: 8px;
+  }
+
+  .policy-section h2 {
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 16px;
+    color: var(--text);
+  }
+
+  .policy-section p {
+    color: var(--body-text);
+    font-size: 15px;
+    line-height: 1.8;
+    margin-bottom: 12px;
+  }
+
+  .policy-section ul {
+    list-style: none;
+    padding: 0;
+    margin: 12px 0;
+  }
+  .policy-section ul li {
+    color: var(--body-text);
+    font-size: 15px;
+    line-height: 1.8;
+    padding: 6px 0 6px 20px;
+    position: relative;
+  }
+  .policy-section ul li::before {
+    content: '✦';
+    position: absolute;
+    left: 0;
+    color: var(--yellow);
+    font-size: 9px;
+    top: 10px;
+  }
+
+  .highlight-box {
+    background: var(--yellow-dim);
+    border: 1px solid rgba(253,204,54,0.2);
+    border-radius: 10px;
+    padding: 20px 24px;
+    margin: 20px 0;
+  }
+  .highlight-box p {
+    color: var(--text) !important;
+    font-weight: 500;
+    margin: 0 !important;
+  }
+
+  .divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 48px 0;
+  }
+
+  footer {
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+    padding: 32px 48px;
+    text-align: center;
+    color: var(--muted);
+    font-size: 13px;
+  }
+  footer a { color: var(--yellow); text-decoration: none; font-weight: 600; }
+  footer a:hover { text-decoration: underline; }
+
+  @media (max-width: 640px) {
+    header { padding: 16px 20px; }
+    .page-wrap { padding: 120px 20px 80px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <a href="../" class="logo-container">
+    <img src="../assets/icons/TylerGamezIconV2.png" alt="Tyler's Gamez Logo" class="nav-logo-img">
+    <div class="logo">Tyler's Gamez</div>
+  </a>
+  <nav class="nav-links">
+    <a href="../games/">Our Games</a>
+    <a href="#">About Us</a>
+  </nav>
+</header>
+
+<div class="page-wrap">
+  <div class="page-eyebrow">Legal</div>
+  <h1 class="page-title">Terms of Service</h1>
+  <p class="page-meta">Last updated: June 2026 &nbsp;·&nbsp; Tyler's Gamez</p>
+
+  <div class="highlight-box">
+    <p>Short version: Use the site and our games fairly. Don't do anything that would get you banned on Roblox. We're a small indie project, not a corporation.</p>
+  </div>
+
+  <div class="policy-section">
+    <div class="section-number">01 - Agreement</div>
+    <h2>Acceptance of Terms</h2>
+    <p>By accessing and using the Tyler's Gamez website (<strong>tylergamez.vercel.app</strong>) or playing our games on Roblox, you agree to these Terms of Service. If you don't agree, please don't use our site or games.</p>
+    <p>Tyler's Gamez is a personal/hobbyist project and is not a registered business or legal entity.</p>
+  </div>
+
+  <hr class="divider">
+
+  <div class="policy-section">
+    <div class="section-number">02 - The Website</div>
+    <h2>Using This Site</h2>
+    <p>This website is provided free of charge as a public showcase for Tyler's Gamez projects. You may browse it for any lawful purpose. You agree not to:</p>
+    <ul>
+      <li>Attempt to hack, scrape, or disrupt the website or its hosting infrastructure</li>
+      <li>Use the site in any way that violates applicable laws or regulations</li>
+      <li>Misrepresent your affiliation with Tyler's Gamez</li>
+    </ul>
+  </div>
+
+  <hr class="divider">
+
+  <div class="policy-section">
+    <div class="section-number">03 - Our Games</div>
+    <h2>Roblox Games</h2>
+    <p>Our games are hosted on and operated through the Roblox platform. When you play our games, you are also subject to Roblox's own Terms of Service and Community Standards, available at <strong>roblox.com/info/terms</strong>.</p>
+    <p>Within our games, you agree to:</p>
+    <ul>
+      <li>Play fairly and not exploit bugs or glitches to gain an unfair advantage</li>
+      <li>Treat other players with respect</li>
+      <li>Not use cheats, hacks, or unauthorised third-party software</li>
+      <li>Not attempt to disrupt or negatively impact other players' experience</li>
+    </ul>
+    <p>We reserve the right to remove or ban players from our games who violate these rules or Roblox's own policies.</p>
+  </div>
+
+  <hr class="divider">
+
+  <div class="policy-section">
+    <div class="section-number">04 - Intellectual Property</div>
+    <h2>Our Content</h2>
+    <p>All original content on this website including the design, graphics, logos, and written content belongs to Tyler's Gamez. You may not reproduce, copy, or redistribute it without permission.</p>
+    <p>Our Roblox games and their content (game design, assets, scripts) are also the intellectual property of Tyler's Gamez. Roblox's platform terms also apply to content hosted there.</p>
+  </div>
+
+  <hr class="divider">
+
+  <div class="policy-section">
+    <div class="section-number">05 — Disclaimer</div>
+    <h2>No Warranties</h2>
+    <p>This website and our games are provided "as is" without any warranties of any kind. Tyler's Gamez is a hobbyist project we do our best to keep things running, but we can't guarantee the site or games will always be available or error-free.</p>
+    <p>We are not liable for any damages arising from your use of this website or our games.</p>
+  </div>
+
+  <hr class="divider">
+
+  <div class="policy-section">
+    <div class="section-number">06 - Changes</div>
+    <h2>Updates to These Terms</h2>
+    <p>We may update these terms from time to time. When we do, we'll update the date at the top of this page. Continued use of the site or games after changes means you accept the updated terms.</p>
+  </div>
+
+  <hr class="divider">
+
+  <div class="policy-section">
+    <div class="section-number">07 - Contact</div>
+    <h2>Get in Touch</h2>
+    <p>Questions about these terms? Reach out via our social media channels linked on the homepage. We're a small team and we'll do our best to respond.</p>
+  </div>
+</div>
+
+<footer>
+  <p>© 2026 Tyler's Gamez · <a href="../">Home</a> · <a href="privacy-policy">Privacy Policy</a></p>
+</footer>
+
+</body>
+</html>
