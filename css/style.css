@@ -106,9 +106,41 @@ p {
     color: #ffffff;
     font-size: 20px;
     max-width: 600px;
-    margin-bottom: 40px;
+    margin-bottom: 30px; /* Reduced slightly to account for button spacing */
     font-weight: 400;
     opacity: 0.8;
+}
+
+/* View Repository Dedicated Action Button */
+.repo-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(255, 255, 255, 0.04);
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 14px 28px;
+    font-size: 16px;
+    font-weight: 700;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.repo-btn:hover {
+    background: rgba(253, 204, 54, 0.05);
+    border-color: rgb(253, 204, 54);
+    color: rgb(253, 204, 54);
+    transform: translateY(-2px);
+}
+
+.repo-btn i {
+    font-size: 18px;
+    transition: transform 0.2s ease;
+}
+
+.repo-btn:hover i {
+    transform: scale(1.1) rotate(-8deg);
 }
 
 /* Footer */
@@ -166,6 +198,9 @@ footer {
     text-decoration: none;
     font-weight: 600;
     transition: text-decoration 0.2s;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
 }
 
 .creator-link:hover {
