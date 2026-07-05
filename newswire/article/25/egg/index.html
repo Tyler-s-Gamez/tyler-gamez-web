@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tyler's Gamez</title>
+    <link type="image/png" rel="icon" href="/assets/icons/TylerGamezIconV2.png">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Roboto, sans-serif; }
+        body { background-color: #0b0c10; color: #ffffff; min-height: 100vh; display: flex; flex-direction: column; }
+        
+        header {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 15px 40px; background: rgba(11, 12, 16, 0.8); backdrop-filter: blur(10px);
+            position: fixed; width: 100%; top: 0; z-index: 100; border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .logo-container { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+        .nav-logo-img { width: 35px; height: 35px; border-radius: 6px; }
+        .logo { font-size: 24px; font-weight: 800; color: rgb(253, 204, 54); }
+        .nav-links a { color: #c5c6c7; text-decoration: none; font-size: 16px; font-weight: 600; padding: 8px 16px; }
+        .nav-links a:hover { color: rgb(253, 204, 54); }
+
+        main { flex: 1; max-width: 800px; width: 100%; margin: 120px auto 60px auto; padding: 0 20px; }
+
+        .back-link { display: inline-flex; align-items: center; color: rgb(253, 204, 54); text-decoration: none; font-size: 14px; font-weight: 600; margin-bottom: 25px; gap: 5px; }
+        .back-link:hover { text-decoration: underline; }
+
+        .article-container { background: #12131a; border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 12px; padding: 40px; }
+        
+        .article-meta { display: flex; gap: 15px; align-items: center; font-size: 13px; font-weight: 700; color: rgb(253, 204, 54); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 12px; }
+        .article-tag { background: rgba(253, 204, 54, 0.1); padding: 4px 8px; border-radius: 4px; }
+        
+        .article-container h1 { font-size: 36px; font-weight: 900; color: #ffffff; line-height: 1.2; margin-bottom: 20px; text-transform: lowercase; }
+        
+        .article-content { color: #e1e1e3; font-size: 16px; line-height: 1.8; }
+        .article-content p { margin-bottom: 20px; }
+        .article-content h2 { font-size: 22px; font-weight: 800; color: #ffffff; margin: 35px 0 15px 0; border-left: 4px solid rgb(253, 204, 54); padding-left: 12px; }
+
+        @media (max-width: 600px) {
+            .article-container { padding: 25px; }
+            .article-container h1 { font-size: 28px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="/" class="logo-container">
+            <img src="/assets/icons/TylerGamezIconV2.png" alt="Logo" class="nav-logo-img">
+            <div class="logo">Tyler's Gamez</div>
+        </a>
+        <nav class="nav-links">
+            <a href="/games/">Our Games</a>
+            <a href="/about-us/">About Us</a>
+        </nav>
+    </header>
+
+    <main>
+        <a href="/newswire/" class="back-link">← Back to Newswire</a>
+
+        <article class="article-container">
+            <div class="article-meta">
+                <span class="article-tag">Easter Egg</span>
+                <span class="article-date">June 29, 2026</span>
+            </div>
+            
+            <h1>egg</h1>
+
+            <div class="article-content">
+                <p>
+                    this is a egg blah blah etc. If you found this page entirely by accident, congratulations you have successfully dug through the deep layers of the web directory layout. There isn't a massive game cheat code or secret game file locked behind this terminal right now, but you can consider yourself officially ahead of the crowd.
+                </p>
+
+                <h2>The Backstory</h2>
+                <p>
+                    Every network needs a completely random test file to make sure routing grids, dynamic link configurations, and asset pipelines are firing off exactly as intended. Instead of putting up a basic test block, we decided an egg was a much cleaner option.
+                </p>
+
+                <p>
+                    More random updates, platform logs, and actual game logs will start dropping onto the main platform view grid soon. Until then, feel free to head back and browse through the main site index.
+                </p>
+            </div>
+        </article>
+    </main>
+
+</body>
+</html>

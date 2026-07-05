@@ -45,8 +45,25 @@
         /* Team Cards Grid Wrapper */
         .founders-container { display: flex; flex-direction: column; gap: 20px; }
         
-        /* Profile Card Layout */
-        .founder-card { display: flex; gap: 25px; align-items: center; background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 255, 255, 0.03); padding: 25px; border-radius: 10px; }
+        /* Clickable Profile Card Layout */
+        .founder-card { 
+            display: flex; gap: 25px; align-items: center; 
+            background: rgba(255, 255, 255, 0.02); 
+            border: 1px solid rgba(255, 255, 255, 0.03); 
+            padding: 25px; border-radius: 10px; 
+            text-decoration: none; color: inherit;
+            transition: transform 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
+        }
+        .founder-card:hover {
+            transform: translateY(-2px);
+            background: rgba(255, 255, 255, 0.04);
+        }
+        
+        /* Custom Border Glow Transitions on Hover */
+        .founder-card.tyler-card:hover { border-color: rgb(253, 204, 54); }
+        .founder-card.chloe-card:hover { border-color: #e74c3c; }
+        .founder-card.mil-card:hover { border-color: #2ecc71; }
+        .founder-card.fish-card:hover { border-color: #3498db; }
         
         /* Standard team avatar formatting */
         .team-pfp { width: 100px; height: 100px; border-radius: 50%; object-fit: cover; background: #0b0c10; flex-shrink: 0; }
@@ -225,44 +242,44 @@
             <h2>Our Team</h2>
             <div class="founders-container">
                 <!-- Tyler's Card -->
-                <div class="founder-card">
+                <a href="/about-us/tyler-lewis/" class="founder-card tyler-card">
                     <img src="/assets/icons/Tylerpfp.png" alt="Tyler Lewis" class="team-pfp tyler-border">
                     <div class="founder-info">
                         <h3>Tyler Lewis</h3>
                         <div class="founder-title">Founder & Lead Developer</div>
                         <p class="founder-bio">Hey, I'm Tyler! I create and manage the experiences here at Tyler's Gamez. I love building unique concepts on Roblox that bring players together across servers to click buttons, discover secrets, and crush global leaderboards.</p>
                     </div>
-                </div>
+                </a>
 
                 <!-- Chloe's Card -->
-                <div class="founder-card">
+                <a href="/about-us/chloe/" class="founder-card chloe-card">
                     <div class="blank-pfp chloe-border"></div>
                     <div class="founder-info">
                         <h3>Chloe</h3>
                         <div class="founder-title chloe-title">Co-Founder</div>
                         <p class="founder-bio">Chloe helps drive the vision and direction here at Tyler's Gamez. She handles behind-the-scenes work to keep everything running smoothly. Note: She mostly prefers not to be shown publicly, and we fully respect and allow that privacy!</p>
                     </div>
-                </div>
+                </a>
 
                 <!-- Mil's Card -->
-                <div class="founder-card">
+                <a href="/about-us/mil/" class="founder-card mil-card">
                     <img src="/assets/icons/milpfp.png" alt="Mil" class="team-pfp mil-border">
                     <div class="founder-info">
                         <h3>Mil</h3>
                         <div class="founder-title tester-title">Official Game Tester</div>
                         <p class="founder-bio">Mil is the gatekeeper of quality control for our Roblox games and experiences. As one of the first ever players of our games and one of our original testers, she meticulously tracks down pesky bugs before updates roll out to the public, ensuring a smooth and fun experience for all players.</p>
                     </div>
-                </div>
+                </a>
 
                 <!-- Fish's Card -->
-                <div class="founder-card">
+                <a href="/about-us/fish/" class="founder-card fish-card">
                     <img src="/assets/icons/fishpfp.png" alt="Fish" class="team-pfp fish-border">
                     <div class="founder-info">
                         <h3>Fish</h3>
                         <div class="founder-title web-title">Official Website Tester</div>
                         <p class="founder-bio">Fish makes sure our web platform stays up, fast, and totally bulletproof. He clicks through every link, analyzes our pages, and aggressively tests the website(s) for glitches, broken buttons, or display bugs so that your browsing experience matches the quality of our games.</p>
                     </div>
-                </div>
+                </a>
             </div>
 
         </div>

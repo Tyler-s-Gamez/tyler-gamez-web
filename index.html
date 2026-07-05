@@ -124,8 +124,16 @@
             opacity: 0.8;
         }
 
+        /* Actions Row Layout styling */
+        .hero-actions {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
         /* View Repository Dedicated Action Button */
-        .repo-btn {
+        .repo-btn, .newswire-btn {
             display: inline-flex;
             align-items: center;
             gap: 10px;
@@ -140,20 +148,36 @@
             transition: all 0.2s ease;
         }
 
-        .repo-btn:hover {
-            background: rgba(253, 204, 54, 0.05);
-            border-color: rgb(253, 204, 54);
+        /* Premium Highlight Variant styling for the Newswire shortcut */
+        .newswire-btn {
+            background: rgba(253, 204, 54, 0.1);
+            border-color: rgba(253, 204, 54, 0.3);
             color: rgb(253, 204, 54);
+        }
+
+        .repo-btn:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(255, 255, 255, 0.2);
             transform: translateY(-2px);
         }
 
-        .repo-btn i {
+        .newswire-btn:hover {
+            background: rgba(253, 204, 54, 0.2);
+            border-color: rgb(253, 204, 54);
+            transform: translateY(-2px);
+        }
+
+        .repo-btn i, .newswire-btn i {
             font-size: 18px;
             transition: transform 0.2s ease;
         }
 
         .repo-btn:hover i {
             transform: scale(1.1) rotate(-8deg);
+        }
+        
+        .newswire-btn:hover i {
+            transform: scale(1.1) translateY(-1px);
         }
 
         /* Footer */
@@ -174,17 +198,31 @@
             border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         }
 
-        .footer-logo {
-            font-weight: 700;
-            font-size: 16px;
-            color: #ffffff;
+        /* Footer Links setup on Left */
+        .footer-links {
+            display: flex;
+            gap: 24px;
+            flex-wrap: wrap;
         }
 
-        /* Social Icons Circle Layout styling */
+        .footer-links a {
+            color: #8f9296;
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.2s ease;
+            cursor: pointer;
+        }
+
+        .footer-links a:hover {
+            color: rgb(253, 204, 54);
+        }
+
+        /* Social Icons Circle Layout styling on Right */
         .footer-socials {
             display: flex;
-            gap: 16px;
+            gap: 12px;
             align-items: center;
+            flex-wrap: wrap;
         }
 
         .social-circle {
@@ -218,25 +256,12 @@
             transform: translateY(-3px);
         }
 
-        .footer-links {
-            display: flex;
-            gap: 24px;
-            flex-wrap: wrap;
-        }
-
-        .footer-links a {
-            color: #8f9296;
-            text-decoration: none;
-            font-size: 14px;
-            transition: color 0.2s ease;
-            cursor: pointer;
-        }
-
-        .footer-links a:hover {
-            color: rgb(253, 204, 54);
-        }
-
         .footer-bottom {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
             text-align: center;
             padding-top: 20px;
             color: #5f6368;
@@ -392,6 +417,7 @@
         </a>
         <nav class="nav-links">
             <a href="games/">Our Games</a>
+            <a href="newswire/">Newswire</a>
             <a href="/about-us/">About Us</a>
         </nav>
     </header>
@@ -401,10 +427,16 @@
         <h1>Something Big Is Cooking</h1>
         <p>The ultimate hub for Tyler's Gamez is currently being built. Stay locked in.</p>
         
-        <a href="https://github.com/TylerGamerYT/tyler-gamez-web" target="_blank" class="repo-btn">
-            <i class="fa-brands fa-github"></i>
-            View Source Code
-        </a>
+        <div class="hero-actions">
+            <a href="newswire/" class="newswire-btn">
+                <i class="fa-solid fa-newspaper"></i>
+                Read Newswire
+            </a>
+            <a href="https://github.com/TylerGamerYT/tyler-gamez-web" target="_blank" class="repo-btn">
+                <i class="fa-brands fa-github"></i>
+                View Source Code
+            </a>
+        </div>
     </main>
 
     <div id="statusModal" class="status-modal">
@@ -429,23 +461,6 @@
 
     <footer>
         <div class="footer-content">
-            <div class="footer-logo">© 2026 Tyler’s Gamez. All rights reserved.</div>
-            
-            <div class="footer-socials">
-                <a href="https://www.youtube.com/@TylerGamez0" target="_blank" class="social-circle" title="YouTube">
-                    <i class="fa-brands fa-youtube"></i>
-                </a>
-                <a href="https://www.instagram.com/TylerGamez0" target="_blank" class="social-circle" title="Instagram">
-                    <i class="fa-brands fa-instagram"></i>
-                </a>
-                <a href="https://x.com/TylerGamez" target="_blank" class="social-circle classic-twitter" title="Twitter">
-                    <i></i>
-                </a>
-                <a href="https://www.facebook.com/TylerGamez0" target="_blank" class="social-circle" title="Facebook">
-                    <i class="fa-brands fa-facebook-f"></i>
-                </a>
-            </div>
-
             <div class="footer-links">
                 <a href="privacy-policy/">Privacy Policy</a>
                 <a href="terms-of-service/">Terms of Service</a>
@@ -453,9 +468,36 @@
                 <a onclick="openStatus()">Server Status</a>
                 <a href="#">Contact Support</a>
             </div>
+            
+            <div class="footer-socials">
+                <a href="https://www.instagram.com/TylerGamez0" target="_blank" class="social-circle" title="Instagram">
+                    <i class="fa-brands fa-instagram"></i>
+                </a>
+                <a href="https://x.com/TylerGamez" target="_blank" class="social-circle classic-twitter" title="Twitter">
+                    <i></i>
+                </a>
+                <a href="https://www.youtube.com/@TylerGamez0" target="_blank" class="social-circle" title="YouTube">
+                    <i class="fa-brands fa-youtube"></i>
+                </a>
+                <a href="https://www.facebook.com/TylerGamez0" target="_blank" class="social-circle" title="Facebook">
+                    <i class="fa-brands fa-facebook-f"></i>
+                </a>
+                <a href="https://www.tiktok.com/@tylergamez0" target="_blank" class="social-circle" title="TikTok">
+                    <i class="fa-brands fa-tiktok"></i>
+                </a>
+                <a href="https://discord.gg/2Df7eczTrb" target="_blank" class="social-circle" title="Discord">
+                    <i class="fa-brands fa-discord"></i>
+                </a>
+                <a href="https://www.twitch.tv/tylergamez0" target="_blank" class="social-circle" title="Twitch">
+                    <i class="fa-brands fa-twitch"></i>
+                </a>
+            </div>
         </div>
+        
         <div class="footer-bottom">
-            Powered by <a href="https://github.com/TylerGamerYT" target="_blank" class="creator-link"><i class="fa-brands fa-github"></i> Tyler</a>
+            <span>&copy; 2026 Tyler’s Gamez. All rights reserved.</span>
+            <span>|</span>
+            <span>Powered by <a href="https://github.com/TylerGamerYT" target="_blank" class="creator-link"><i class="fa-brands fa-github"></i> Tyler</a></span>
         </div>
     </footer>
 
