@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>???</title>
+    
+    <link rel="icon" type="image/png" href="../assets/icons/TylerGamezIconV2.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* Reset & Cyberpunk Theme Base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Courier New', Courier, monospace; /* Terminal font */
+        }
+
+        body {
+            background-color: #050508;
+            color: #ff3366; /* Vibrant neon red/pink matching her Co-Founder theme color */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Matrix Rain / Scanline overlay for aesthetic */
+        body::before {
+            content: " ";
+            display: block;
+            position: absolute;
+            top: 0; left: 0; bottom: 0; right: 0;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+            z-index: 2;
+            background-size: 100% 2px, 3px 100%;
+            pointer-events: none;
+        }
+
+        .terminal-container {
+            text-align: center;
+            z-index: 5;
+            padding: 20px;
+        }
+
+        /* Mysterious "?" Icon that pulses */
+        .secret-icon {
+            font-size: 80px;
+            color: rgba(255, 51, 102, 0.2);
+            text-shadow: 0 0 20px rgba(255, 51, 102, 0.6);
+            margin-bottom: 20px;
+            animation: pulse 2s infinite ease-in-out;
+            cursor: pointer;
+            transition: transform 0.3s ease, color 0.3s ease;
+        }
+
+        .secret-icon:hover {
+            transform: scale(1.1) rotate(10deg);
+            color: rgba(255, 51, 102, 1);
+        }
+
+        /* Glitchy/scrambling main text */
+        .glitch-text {
+            font-size: 36px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            text-shadow: 0 0 10px rgba(255, 51, 102, 0.8);
+            margin-bottom: 10px;
+            min-height: 45px;
+        }
+
+        /* Subtle typewriter subtext */
+        .sub-text {
+            font-size: 14px;
+            color: #8f9296;
+            opacity: 0.7;
+            margin-bottom: 40px;
+            letter-spacing: 1px;
+        }
+
+        /* Return button to sneak back to main page */
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 51, 102, 0.05);
+            border: 1px solid rgba(255, 51, 102, 0.2);
+            color: #ff3366;
+            padding: 10px 20px;
+            font-size: 14px;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            font-weight: bold;
+        }
+
+        .back-btn:hover {
+            background: rgba(255, 51, 102, 0.2);
+            border-color: #ff3366;
+            box-shadow: 0 0 15px rgba(255, 51, 102, 0.4);
+            transform: translateY(-2px);
+        }
+
+        /* Background grid effect */
+        .grid {
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background-image: linear-gradient(rgba(255, 51, 102, 0.03) 1px, transparent 1px),
+                              linear-gradient(90deg, rgba(255, 51, 102, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            transform: perspective(500px) rotateX(60deg) translateY(-30%);
+            z-index: 1;
+            opacity: 0.5;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.4; }
+            50% { transform: scale(1.05); opacity: 0.9; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="grid"></div>
+
+    <div class="terminal-container">
+        <div class="secret-icon" onclick="scrambleText()">
+            <i class="fa-solid fa-circle-question"></i>
+        </div>
+
+        <div class="glitch-text" id="secretMsg">_ _ _ _ _</div>
+        
+        <div class="sub-text">SECURE CO-FOUNDER NODE // ACCESS GRANTED</div>
+
+        <a href="../" class="back-btn">
+            <i class="fa-solid fa-terminal"></i> Return to Terminal
+        </a>
+    </div>
+
+    <script>
+        const targetPhrase = "Chloe was here...";
+        const chars = "!@#$%^&*()_+{}:<>?/.,;[]=-~";
+        const element = document.getElementById("secretMsg");
+        let isScrambling = false;
+
+        function scrambleText() {
+            if (isScrambling) return;
+            isScrambling = true;
+
+            let iterations = 0;
+            const interval = setInterval(() => {
+                element.innerText = targetPhrase
+                    .split("")
+                    .map((char, index) => {
+                        // Keep spaces and dots intact for readable structure
+                        if (char === " " || char === ".") return char;
+                        
+                        // Slowly lock in real characters from left to right
+                        if (index < iterations) {
+                            return targetPhrase[index];
+                        }
+                        
+                        // Random scramble characters for the unfinished parts
+                        return chars[Math.floor(Math.random() * chars.length)];
+                    })
+                    .join("");
+
+                if (iterations >= targetPhrase.length) {
+                    clearInterval(interval);
+                    isScrambling = false;
+                }
+
+                // Increment rate controls speed of text locking in
+                iterations += 1/3; 
+            }, 35);
+        }
+
+        // Auto run once on page load!
+        window.onload = () => {
+            setTimeout(scrambleText, 500);
+        };
+    </script>
+</body>
+</html>
