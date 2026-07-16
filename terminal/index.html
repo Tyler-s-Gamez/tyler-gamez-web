@@ -1,1 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TG-DOS // Terminal Bypass</title>
+    
+    <link rel="icon" type="image/png" href="../assets/icons/TylerGamezIconV2.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
+    <style>
+        /* Cyber Terminal Styling */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Consolas', 'Courier New', monospace;
+        }
+
+        body {
+            background-color: #030305;
+            color: #33ff33; /* Classic terminal neon green */
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* CRT Scanline Filter Overlay */
+        body::before {
+            content: " ";
+            display: block;
+            position: absolute;
+            top: 0; left: 0; bottom: 0; right: 0;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.3) 50%), linear-gradient(90deg, rgba(0, 255, 0, 0.03), rgba(0, 0, 0, 0), rgba(0, 255, 255, 0.03));
+            z-index: 99;
+            background-size: 100% 4px, 6px 100%;
+            pointer-events: none;
+        }
+
+        .terminal-window {
+            width: 100%;
+            max-width: 900px;
+            height: 80vh;
+            background: rgba(10, 12, 8, 0.95);
+            border: 2px solid #118811;
+            border-radius: 8px;
+            box-shadow: 0 0 30px rgba(51, 255, 51, 0.15);
+            display: flex;
+            flex-direction: column;
+            z-index: 10;
+        }
+
+        /* Top Bar */
+        .terminal-header {
+            background: #112211;
+            padding: 10px 15px;
+            border-bottom: 1px solid #118811;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header-title {
+            font-size: 13px;
+            font-weight: bold;
+            letter-spacing: 1px;
+            color: #55ff55;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .header-dots {
+            display: flex;
+            gap: 6px;
+        }
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #115511;
+        }
+
+        .dot.red { background: #ff3366; }
+
+        /* Output Box */
+        .terminal-body {
+            flex-grow: 1;
+            padding: 20px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        /* Custom Scrollbar */
+        .terminal-body::-webkit-scrollbar {
+            width: 8px;
+        }
+        .terminal-body::-webkit-scrollbar-track {
+            background: rgba(0,0,0,0.2);
+        }
+        .terminal-body::-webkit-scrollbar-thumb {
+            background: #116611;
+            border-radius: 4px;
+        }
+
+        /* Color classes */
+        .log-info { color: #88ff88; }
+        .log-warn { color: #ffff33; }
+        .log-danger { color: #ff3333; }
+        .log-success { color: #00ffff; text-shadow: 0 0 10px rgba(0, 255, 255, 0.5); }
+        .command-entered { color: #ffffff; }
+
+        /* Command Line Input Wrapper */
+        .input-line {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 10px;
+        }
+
+        .prompt {
+            color: #33ff33;
+            font-weight: bold;
+            white-space: nowrap;
+        }
+
+        /* Interactive styling logic */
+        .input-line input {
+            background: transparent;
+            border: none;
+            outline: none;
+            color: #ffffff;
+            font-family: inherit;
+            font-size: 14px;
+            flex-grow: 1;
+            caret-color: #33ff33; /* Blinking cursor native color */
+        }
+
+        /* Big hacking result frame overlay */
+        .hack-screen {
+            display: none;
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(5, 15, 5, 0.95);
+            z-index: 100;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            border-radius: 6px;
+            border: 3px solid #00ffff;
+            animation: glitch-border 1.5s infinite;
+        }
+
+        .hack-title {
+            font-size: 40px;
+            font-weight: 900;
+            color: #00ffff;
+            text-shadow: 0 0 20px rgba(0, 255, 255, 0.8);
+            margin-bottom: 15px;
+            text-align: center;
+            letter-spacing: 3px;
+        }
+
+        .hack-sub {
+            font-size: 16px;
+            color: #ffffff;
+            margin-bottom: 30px;
+            letter-spacing: 1px;
+        }
+
+        .exit-hack-btn {
+            background: transparent;
+            border: 2px solid #00ffff;
+            color: #00ffff;
+            padding: 12px 24px;
+            font-weight: bold;
+            font-family: inherit;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .exit-hack-btn:hover {
+            background: #00ffff;
+            color: #000000;
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.4);
+        }
+
+        @keyframes glitch-border {
+            0%, 100% { border-color: #00ffff; }
+            50% { border-color: #ff3366; }
+        }
+
+        @media (max-width: 600px) {
+            .terminal-window { height: 95vh; }
+            .hack-title { font-size: 24px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="terminal-window" onclick="focusInput()">
+        <!-- Header Windows-style Bar -->
+        <div class="terminal-header">
+            <div class="header-title">
+                <i class="fa-solid fa-terminal"></i> TG-DOS v2.6.0-secured_bypass
+            </div>
+            <div class="header-dots">
+                <div class="dot red"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+            </div>
+        </div>
+
+        <!-- Scrollable Output Body -->
+        <div class="terminal-body" id="logBody">
+            <div class="log-info">TG-DOS [Version 10.0.22621-SECURE]</div>
+            <div class="log-info">(c) Tyler's Gamez Corporation. All rights reserved.</div>
+            <br>
+            <div class="log-warn">[WARNING] System unauthorized access is heavily monitored.</div>
+            <div class="log-info">Type 'help' to review catalog parameters or run active routines.</div>
+            <br>
+
+            <!-- Command logs write dynamically here -->
+            <div id="logsOutput"></div>
+
+            <!-- Terminal prompt input line -->
+            <div class="input-line" id="promptLine">
+                <span class="prompt">guest@tylergamez:~$</span>
+                <input type="text" id="termInput" autocomplete="off" autofocus spellcheck="false">
+            </div>
+        </div>
+
+        <!-- Overlaid Secret Hacked Screen -->
+        <div class="hack-screen" id="hackScreen">
+            <div class="hack-title">SYSTEM COMPROMISED</div>
+            <div class="hack-sub">TYLER'S GAMEZ DECRYPTED SYSTEM: ROOT@ROOT ACCESS_GRANTED</div>
+            <button class="exit-hack-btn" onclick="exitHack()">DISCONNECT TERMINAL</button>
+        </div>
+    </div>
+
+    <script>
+        const input = document.getElementById("termInput");
+        const logsOutput = document.getElementById("logsOutput");
+        const logBody = document.getElementById("logBody");
+        const hackScreen = document.getElementById("hackScreen");
+        const promptLine = document.getElementById("promptLine");
+
+        // Simple utility helper to print lines
+        function printLog(text, className = '') {
+            const p = document.createElement("div");
+            p.className = className;
+            p.innerHTML = text;
+            logsOutput.appendChild(p);
+            logBody.scrollTop = logBody.scrollHeight; // Auto scrolls down
+        }
+
+        // Force cursor active state even on random screen clicks
+        function focusInput() {
+            input.focus();
+        }
+
+        // Command handler
+        input.addEventListener("keydown", function(e) {
+            if (e.key === "Enter") {
+                const commandText = input.value.trim();
+                const commandLower = commandText.toLowerCase();
+                
+                if (commandText === "") return;
+
+                // Echo typed text
+                printLog(`guest@tylergamez:~$ <span class="command-entered">${commandText}</span>`);
+                input.value = ""; // clear entry field
+
+                // Command routing logic
+                if (commandLower === "help") {
+                    printLog("Available Directory Parameters:", "log-info");
+                    printLog("  help                Display active commands list");
+                    printLog("  about               System architecture detail overview");
+                    printLog("  clear               Format console window cache cleanly");
+                    printLog("  hack tyler gamez    Attempt root framework breach matrix bypass");
+                    printLog("  exit                Return back home");
+                } 
+                else if (commandLower === "about") {
+                    printLog("Framework Build Node: TG-DOS Web-Bypass v2.6.0-stable", "log-info");
+                    printLog("Engine: V8 Core // Connection: Secure Cloud Tunnel Hub", "log-info");
+                } 
+                else if (commandLower === "clear") {
+                    logsOutput.innerHTML = "";
+                } 
+                else if (commandLower === "exit") {
+                    printLog("Exiting bypass terminal... redirecting home.", "log-warn");
+                    setTimeout(() => { window.location.href = "../"; }, 1000);
+                } 
+                else if (commandLower === "hack tyler gamez") {
+                    startHackingSequence();
+                } 
+                else {
+                    printLog(`TG-DOS: Command '${commandText}' unrecognized. Type 'help' to review directory.`, "log-danger");
+                }
+            }
+        });
+
+        // Hacking visual effects sequence
+        function startHackingSequence() {
+            input.disabled = true;
+            promptLine.style.display = "none";
+            
+            const hackSteps = [
+                { text: "CRITICAL: INITIATING TERMINAL BRACE BREACH...", class: "log-danger" },
+                { text: "Scanning node framework host IP: 192.168.88.254...", class: "log-info" },
+                { text: "Cloudflare proxy shielding identified... Attempting DNS leak bypass...", class: "log-warn" },
+                { text: "Leak detected! Origin IP discovered: [94.130.12.87]", class: "log-success" },
+                { text: "Injecting payload parameter matrix stack into SQLite backend...", class: "log-info" },
+                { text: "Bypassing hashing systems... decrypting salt-keys...", class: "log-warn" },
+                { text: "ROOT PASSWORDS DECRYPTED: *******", class: "log-success" },
+                { text: "Initializing SSH connection pool to administration server...", class: "log-info" },
+                { text: "OVERRIDING SERVER CORE COMPILER CONTROLS...", class: "log-danger" },
+                { text: "Injecting web root directory asset values...", class: "log-warn" },
+                { text: "ENABLING MAIN ENGINE ACCESS CONTROL...", class: "log-success" },
+                { text: "CONNECTION READY. ACCESSING ROOT ACCOUNT ENVIRONMENT...", class: "log-success" }
+            ];
+
+            let step = 0;
+            const hackInterval = setInterval(() => {
+                if (step < hackSteps.length) {
+                    printLog(hackSteps[step].text, hackSteps[step].class);
+                    step++;
+                } else {
+                    clearInterval(hackInterval);
+                    // Flash the full screen Hack takeover interface
+                    setTimeout(() => {
+                        hackScreen.style.display = "flex";
+                    }, 800);
+                }
+            }, 600); // 600ms delay between log messages for cinematic pacing
+        }
+
+        function exitHack() {
+            hackScreen.style.display = "none";
+            input.disabled = false;
+            promptLine.style.display = "flex";
+            printLog("[DISCONNECTED] Bypass terminated cleanly. Cache reset.", "log-info");
+            input.focus();
+        }
+    </script>
+</body>
+</html>
