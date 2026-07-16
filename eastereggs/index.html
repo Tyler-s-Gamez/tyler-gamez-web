@@ -1,1 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Archive // Secrets</title>
+    
+    <link rel="icon" type="image/png" href="../assets/icons/TylerGamezIconV2.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
+    <style>
+        /* Reset & Dark Database Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: #0b0c10;
+            color: #ffffff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 20px;
+            overflow-x: hidden;
+        }
+
+        /* Ambient background glow */
+        .glow-bg {
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: rgba(253, 204, 54, 0.03);
+            border-radius: 50%;
+            filter: blur(80px);
+            top: 10%;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .archive-container {
+            width: 100%;
+            max-width: 800px;
+            background: rgba(18, 19, 26, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(12px);
+            border-radius: 16px;
+            padding: 40px;
+            z-index: 5;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Header Setup */
+        .archive-header {
+            text-align: center;
+            margin-bottom: 40px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            padding-bottom: 24px;
+        }
+
+        .archive-header i {
+            font-size: 42px;
+            color: rgb(253, 204, 54);
+            margin-bottom: 12px;
+            text-shadow: 0 0 15px rgba(253, 204, 54, 0.3);
+        }
+
+        .archive-header h1 {
+            font-size: 32px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            color: #ffffff;
+            margin-bottom: 8px;
+        }
+
+        .archive-header p {
+            color: #8f9296;
+            font-size: 14px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* Easter Egg Cards Grid */
+        .eggs-list {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .egg-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            padding: 24px;
+            display: flex;
+            gap: 20px;
+            align-items: flex-start;
+            transition: all 0.2s ease;
+        }
+
+        .egg-card:hover {
+            background: rgba(255, 255, 255, 0.04);
+            border-color: rgba(253, 204, 54, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .egg-icon {
+            width: 48px;
+            height: 48px;
+            background: rgba(253, 204, 54, 0.08);
+            border-radius: 8px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 20px;
+            color: rgb(253, 204, 54);
+            flex-shrink: 0;
+        }
+
+        /* Unique styling variant for Chloe's custom node card */
+        .egg-card.chloe-variant .egg-icon {
+            background: rgba(255, 51, 102, 0.08);
+            color: #ff3366;
+        }
+        .egg-card.chloe-variant:hover {
+            border-color: rgba(255, 51, 102, 0.3);
+        }
+
+        .egg-info {
+            flex-grow: 1;
+        }
+
+        .egg-title {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 6px;
+            color: #ffffff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .egg-desc {
+            font-size: 14px;
+            color: #8f9296;
+            line-height: 1.5;
+            margin-bottom: 16px;
+        }
+
+        /* Instructions Bar */
+        .hint-box {
+            background: rgba(0, 0, 0, 0.2);
+            border-left: 3px solid rgb(253, 204, 54);
+            padding: 10px 14px;
+            font-size: 13px;
+            border-radius: 0 6px 6px 0;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #c5c6c7;
+        }
+
+        .egg-card.chloe-variant .hint-box {
+            border-left-color: #ff3366;
+        }
+
+        .hint-box code {
+            background: rgba(255, 255, 255, 0.08);
+            padding: 2px 6px;
+            border-radius: 4px;
+            color: #ffffff;
+            font-family: monospace;
+            font-size: 12px;
+        }
+
+        /* Launch Secret Button */
+        .launch-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 50%;
+            color: #ffffff;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            margin-left: 10px;
+        }
+
+        .launch-btn:hover {
+            background: rgb(253, 204, 54);
+            color: #0b0c10;
+            transform: scale(1.1);
+        }
+
+        .egg-card.chloe-variant .launch-btn:hover {
+            background: #ff3366;
+            color: #ffffff;
+        }
+
+        /* Return Footer link */
+        .archive-footer {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .back-home {
+            color: #5f6368;
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .back-home:hover {
+            color: rgb(253, 204, 54);
+        }
+
+        @media (max-width: 576px) {
+            .egg-card { flex-direction: column; gap: 14px; }
+            .egg-title { width: 100%; }
+            .archive-container { padding: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="glow-bg"></div>
+
+    <div class="archive-container">
+        <div class="archive-header">
+            <i class="fa-solid fa-box-archive"></i>
+            <h1>The Secret Vault</h1>
+            <p>Tyler's Gamez Registry Database // Easter Eggs Found</p>
+        </div>
+
+        <div class="eggs-list">
+            
+            <div class="egg-card chloe-variant">
+                <div class="egg-icon">
+                    <i class="fa-solid fa-user-secret"></i>
+                </div>
+                <div class="egg-info">
+                    <div class="egg-title">
+                        Chloe's Terminal Bypass
+                        <a href="../chloe/" class="launch-btn" title="Examine Node"><i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                    <div class="egg-desc">
+                        A locked encrypted bypass belonging to Tyler's Gamez co-founder. Features terminal style code-breaking matrices and security configurations.
+                    </div>
+                    <div class="hint-box">
+                        <i class="fa-solid fa-key"></i>
+                        <span>How to access: Append <code>/chloe</code> directly to the home website address bar.</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="egg-card">
+                <div class="egg-icon">
+                    <i class="fa-solid fa-lock"></i>
+                </div>
+                <div class="egg-info">
+                    <div class="egg-title">
+                        [ DATA ENCRYPTED ]
+                    </div>
+                    <div class="egg-desc">
+                        No secondary anomalies detected yet. Keep exploring future system updates to unlock hidden pathways.
+                    </div>
+                    <div class="hint-box" style="border-left-color: #5f6368;">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <span>Status: Awaiting more hidden parameters.</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="archive-footer">
+            <a href="../" class="back-home">
+                <i class="fa-solid fa-house"></i> Return Home
+            </a>
+        </div>
+    </div>
+
+</body>
+</html>
