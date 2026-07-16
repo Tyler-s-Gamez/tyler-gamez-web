@@ -130,6 +130,15 @@
             border-color: rgba(255, 51, 102, 0.3);
         }
 
+        /* Unique styling variant for Terminal card */
+        .egg-card.terminal-variant .egg-icon {
+            background: rgba(51, 255, 51, 0.08);
+            color: #33ff33;
+        }
+        .egg-card.terminal-variant:hover {
+            border-color: rgba(51, 255, 51, 0.3);
+        }
+
         .egg-info {
             flex-grow: 1;
         }
@@ -168,6 +177,10 @@
             border-left-color: #ff3366;
         }
 
+        .egg-card.terminal-variant .hint-box {
+            border-left-color: #33ff33;
+        }
+
         .hint-box code {
             background: rgba(255, 255, 255, 0.08);
             padding: 2px 6px;
@@ -201,6 +214,11 @@
         .egg-card.chloe-variant .launch-btn:hover {
             background: #ff3366;
             color: #ffffff;
+        }
+
+        .egg-card.terminal-variant .launch-btn:hover {
+            background: #33ff33;
+            color: #030305;
         }
 
         /* Return Footer link */
@@ -243,6 +261,7 @@
 
         <div class="eggs-list">
             
+            <!-- Secret 1: Chloe's Page -->
             <div class="egg-card chloe-variant">
                 <div class="egg-icon">
                     <i class="fa-solid fa-user-secret"></i>
@@ -253,7 +272,7 @@
                         <a href="../chloe/" class="launch-btn" title="Examine Node"><i class="fa-solid fa-arrow-right"></i></a>
                     </div>
                     <div class="egg-desc">
-                        A locked encrypted bypass belonging to Tyler's Gamez co-founder. Features terminal style code-breaking matrices and security configurations.
+                        A locked encrypted bypass belonging to Tyler's Gamez co-founder. Features terminal-style code-breaking matrices and security configurations.
                     </div>
                     <div class="hint-box">
                         <i class="fa-solid fa-key"></i>
@@ -262,20 +281,22 @@
                 </div>
             </div>
 
-            <div class="egg-card">
+            <!-- Secret 2: Cyber Terminal Bypass -->
+            <div class="egg-card terminal-variant">
                 <div class="egg-icon">
-                    <i class="fa-solid fa-lock"></i>
+                    <i class="fa-solid fa-terminal"></i>
                 </div>
                 <div class="egg-info">
                     <div class="egg-title">
-                        [ DATA ENCRYPTED ]
+                        TG-DOS Command Line Bypass
+                        <a href="../terminal/" class="launch-btn" title="Examine Node"><i class="fa-solid fa-arrow-right"></i></a>
                     </div>
                     <div class="egg-desc">
-                        No secondary anomalies detected yet. Keep exploring future system updates to unlock hidden pathways.
+                        A secure command-line shell interface simulating Tyler's Gamez main servers. Contains simulated hacking controls and dynamic status logging triggers.
                     </div>
-                    <div class="hint-box" style="border-left-color: #5f6368;">
-                        <i class="fa-solid fa-magnifying-glass"></i>
-                        <span>Status: Awaiting more hidden parameters.</span>
+                    <div class="hint-box">
+                        <i class="fa-solid fa-key"></i>
+                        <span>How to access: Navigate to <code>/terminal</code> and execute the <code>hack tyler gamez</code> system command.</span>
                     </div>
                 </div>
             </div>
