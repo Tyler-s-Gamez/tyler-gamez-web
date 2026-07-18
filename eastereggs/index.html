@@ -139,6 +139,15 @@
             border-color: rgba(51, 255, 51, 0.3);
         }
 
+        /* Unique styling variant for Testers card */
+        .egg-card.testers-variant .egg-icon {
+            background: rgba(255, 170, 0, 0.08);
+            color: #ffaa00;
+        }
+        .egg-card.testers-variant:hover {
+            border-color: rgba(255, 170, 0, 0.3);
+        }
+
         .egg-info {
             flex-grow: 1;
         }
@@ -181,6 +190,10 @@
             border-left-color: #33ff33;
         }
 
+        .egg-card.testers-variant .hint-box {
+            border-left-color: #ffaa00;
+        }
+
         .hint-box code {
             background: rgba(255, 255, 255, 0.08);
             padding: 2px 6px;
@@ -219,6 +232,11 @@
         .egg-card.terminal-variant .launch-btn:hover {
             background: #33ff33;
             color: #030305;
+        }
+
+        .egg-card.testers-variant .launch-btn:hover {
+            background: #ffaa00;
+            color: #0b0c10;
         }
 
         /* Return Footer link */
@@ -269,7 +287,6 @@
                 <div class="egg-info">
                     <div class="egg-title">
                         Chloe's Terminal Bypass
-                        <!-- Fixed absolute path -->
                         <a href="/eastereggs/chloe/" class="launch-btn" title="Examine Node"><i class="fa-solid fa-arrow-right"></i></a>
                     </div>
                     <div class="egg-desc">
@@ -290,7 +307,6 @@
                 <div class="egg-info">
                     <div class="egg-title">
                         TG-DOS Command Line Bypass
-                        <!-- Fixed absolute path -->
                         <a href="/eastereggs/terminal/" class="launch-btn" title="Examine Node"><i class="fa-solid fa-arrow-right"></i></a>
                     </div>
                     <div class="egg-desc">
@@ -299,6 +315,26 @@
                     <div class="hint-box">
                         <i class="fa-solid fa-key"></i>
                         <span>How to access: Navigate to <code>/eastereggs/terminal</code> and execute the <code>hack tyler gamez</code> system command.</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Secret 3: Beta Testers Registry Portal -->
+            <div class="egg-card testers-variant">
+                <div class="egg-icon">
+                    <i class="fa-solid fa-flask"></i>
+                </div>
+                <div class="egg-info">
+                    <div class="egg-title">
+                        Beta Testers Command Console
+                        <a href="/eastereggs/testers/" class="launch-btn" title="Examine Node"><i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                    <div class="egg-desc">
+                        A hidden portal containing staging builds, developmental feature toggles, and internal logs used by the platform's test engineers.
+                    </div>
+                    <div class="hint-box">
+                        <i class="fa-solid fa-key"></i>
+                        <span>How to access: Go to <code>/eastereggs/testers/</code> to view the experimental modules panel.</span>
                     </div>
                 </div>
             </div>
