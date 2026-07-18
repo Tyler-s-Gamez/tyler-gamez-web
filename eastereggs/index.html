@@ -148,6 +148,15 @@
             border-color: rgba(255, 170, 0, 0.3);
         }
 
+        /* Unique styling variant for Interactive Egg Room card */
+        .egg-card.eggroom-variant .egg-icon {
+            background: rgba(157, 78, 221, 0.12);
+            color: #9d4edd;
+        }
+        .egg-card.eggroom-variant:hover {
+            border-color: rgba(157, 78, 221, 0.4);
+        }
+
         .egg-info {
             flex-grow: 1;
         }
@@ -194,6 +203,10 @@
             border-left-color: #ffaa00;
         }
 
+        .egg-card.eggroom-variant .hint-box {
+            border-left-color: #9d4edd;
+        }
+
         .hint-box code {
             background: rgba(255, 255, 255, 0.08);
             padding: 2px 6px;
@@ -237,6 +250,11 @@
         .egg-card.testers-variant .launch-btn:hover {
             background: #ffaa00;
             color: #0b0c10;
+        }
+
+        .egg-card.eggroom-variant .launch-btn:hover {
+            background: #9d4edd;
+            color: #ffffff;
         }
 
         /* Return Footer link */
@@ -335,6 +353,26 @@
                     <div class="hint-box">
                         <i class="fa-solid fa-key"></i>
                         <span>How to access: Go to <code>/eastereggs/testers/</code> to view the experimental modules panel.</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Secret 4: The Sub-Layer Egg Room (NEW) -->
+            <div class="egg-card eggroom-variant">
+                <div class="egg-icon">
+                    <i class="fa-solid fa-egg"></i>
+                </div>
+                <div class="egg-info">
+                    <div class="egg-title">
+                        Sub-Layer Interactive Egg Room
+                        <a href="/eastereggs/egg/" class="launch-btn" title="Examine Node"><i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                    <div class="egg-desc">
+                        An anomalous localized core pocket holding object 000-EGG. Contains an isolated counter matrix that tracks and stores reactive physical click metrics.
+                    </div>
+                    <div class="hint-box">
+                        <i class="fa-solid fa-key"></i>
+                        <span>How to access: Navigate directly to <code>/eastereggs/egg/</code> to access the hidden interactive console.</span>
                     </div>
                 </div>
             </div>
