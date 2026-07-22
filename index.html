@@ -3,13 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tyler's Gamez // Official Site</title>
+    <title>Tyler's Gamez</title>
     
     <link rel="icon" type="image/png" href="assets/icons/TylerGamezIconV2.png">
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
-        /* Base Setup & Modern Dark UI */
+        /* Reset & Base Styles */
         * {
             margin: 0;
             padding: 0;
@@ -18,211 +19,250 @@
         }
 
         body {
-            background-color: #08090c;
+            background-color: #0b0c10;
             color: #ffffff;
-            min-height: 100vh;
             display: flex;
             flex-direction: column;
-            align-items: center;
+            min-height: 100vh;
             overflow-x: hidden;
         }
 
-        /* Ambient background glow elements */
-        .glow-bg {
-            position: absolute;
-            width: 600px;
-            height: 600px;
-            background: rgba(253, 204, 54, 0.03);
-            border-radius: 50%;
-            filter: blur(120px);
-            top: -100px;
-            z-index: 1;
-            pointer-events: none;
-        }
-
-        /* Modern Navigation Bar */
-        nav {
-            width: 100%;
-            max-width: 1200px;
-            padding: 24px 20px;
+        /* Header / Navbar */
+        header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            z-index: 10;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 15px 40px;
+            background: rgba(11, 12, 16, 0.8);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        .brand {
-            font-size: 20px;
-            font-weight: 900;
-            letter-spacing: 1.5px;
-            color: #ffffff;
-            text-transform: uppercase;
+        .logo-container {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
             text-decoration: none;
         }
 
-        .brand span {
+        .nav-logo-img {
+            width: 35px;
+            height: 35px;
+            border-radius: 6px;
+            object-fit: cover;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 800;
+            letter-spacing: 1px;
             color: rgb(253, 204, 54);
         }
 
         .nav-links {
             display: flex;
-            gap: 20px;
-            list-style: none;
+            gap: 10px;
         }
 
         .nav-links a {
-            color: #8f9296;
+            color: #c5c6c7;
             text-decoration: none;
-            font-size: 14px;
+            font-size: 16px;
             font-weight: 600;
-            transition: color 0.2s ease;
+            transition: color 0.3s ease, background-color 0.3s ease;
+            padding: 8px 16px;
+            border-radius: 4px;
         }
 
         .nav-links a:hover {
             color: rgb(253, 204, 54);
+            background: rgba(253, 204, 54, 0.08);
         }
 
-        /* Hero / Homepage Main Header */
-        .hero {
-            width: 100%;
-            max-width: 1200px;
-            padding: 80px 20px 40px;
+        /* Hero / Coming Soon Section */
+        main {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
             text-align: center;
-            z-index: 5;
+            padding: 120px 20px 60px 20px;
         }
 
-        .hero h1 {
-            font-size: 52px;
-            font-weight: 900;
-            letter-spacing: -1.5px;
-            margin-bottom: 16px;
-            background: linear-gradient(180deg, #ffffff 0%, #a1a5b0 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .hero p {
-            color: #8f9296;
-            font-size: 18px;
-            max-width: 650px;
-            margin: 0 auto;
-            line-height: 1.6;
-        }
-
-        /* Featured News Grid (Rockstar/GTA VI Style Layout) */
-        .featured-section {
-            width: 100%;
-            max-width: 1200px;
-            padding: 40px 20px 80px;
-            z-index: 5;
-        }
-
-        .section-header {
+        .badge {
+            background: rgba(253, 204, 54, 0.1);
+            border: 1px solid rgb(253, 204, 54);
+            color: rgb(253, 204, 54);
+            padding: 6px 16px;
+            border-radius: 20px;
             font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 24px;
+            font-weight: 700;
+        }
+
+        h1 {
+            font-size: 64px;
+            font-weight: 900;
+            margin-bottom: 16px;
+            letter-spacing: -1px;
+            line-height: 1.1;
+        }
+
+        p {
+            color: #ffffff;
+            font-size: 20px;
+            max-width: 600px;
+            margin-bottom: 30px;
+            font-weight: 400;
+            opacity: 0.8;
+        }
+
+        /* Actions Row Layout styling */
+        .hero-actions {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-bottom: 60px;
+        }
+
+        /* View Repository Dedicated Action Button */
+        .repo-btn, .newswire-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(255, 255, 255, 0.04);
+            color: #ffffff;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 14px 28px;
+            font-size: 16px;
+            font-weight: 700;
+            border-radius: 6px;
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+
+        /* Premium Highlight Variant styling for the Newswire shortcut */
+        .newswire-btn {
+            background: rgba(253, 204, 54, 0.1);
+            border-color: rgba(253, 204, 54, 0.3);
+            color: rgb(253, 204, 54);
+        }
+
+        .repo-btn:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .newswire-btn:hover {
+            background: rgba(253, 204, 54, 0.2);
+            border-color: rgb(253, 204, 54);
+            transform: translateY(-2px);
+        }
+
+        .repo-btn i, .newswire-btn i {
+            font-size: 18px;
+            transition: transform 0.2s ease;
+        }
+
+        .repo-btn:hover i {
+            transform: scale(1.1) rotate(-8deg);
+        }
+        
+        .newswire-btn:hover i {
+            transform: scale(1.1) translateY(-1px);
+        }
+
+        /* ROCKSTAR-STYLE FEATURED NEWSWIRE GRID */
+        .rockstar-grid-container {
+            width: 100%;
+            max-width: 1100px;
+            text-align: left;
+            margin-top: 20px;
+        }
+
+        .grid-section-title {
+            font-size: 13px;
             font-weight: 800;
             letter-spacing: 2px;
             text-transform: uppercase;
             color: #5f6368;
-            margin-bottom: 24px;
+            margin-bottom: 20px;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
         }
 
-        .section-header::after {
+        .grid-section-title::after {
             content: '';
-            flex-grow: 1;
+            flex: 1;
             height: 1px;
             background: rgba(255, 255, 255, 0.08);
         }
 
-        .cards-grid {
+        .rockstar-cards-row {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 24px;
         }
 
-        /* Rockstar-Style Interactive News Card */
-        .news-card {
+        /* Individual Card Styling (Matches Rockstar Website Screenshot) */
+        .rs-card {
             background: #111319;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            border-radius: 14px;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 12px;
             overflow: hidden;
             display: flex;
             flex-direction: column;
             text-decoration: none;
-            color: inherit;
-            transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+            color: #ffffff;
+            transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), border-color 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
         }
 
-        .news-card:hover {
+        .rs-card:hover {
             transform: translateY(-6px);
-            border-color: rgba(253, 204, 54, 0.3);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7);
+            border-color: rgba(253, 204, 54, 0.4);
+            box-shadow: 0 16px 32px rgba(0, 0, 0, 0.6);
         }
 
-        /* Top Image Box */
-        .card-image-wrapper {
+        .rs-card-image-box {
             width: 100%;
             height: 240px;
-            position: relative;
             overflow: hidden;
+            position: relative;
             background: #000000;
         }
 
-        .card-image-wrapper img {
+        .rs-card-image-box img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             transition: transform 0.5s ease;
         }
 
-        .news-card:hover .card-image-wrapper img {
+        .rs-card:hover .rs-card-image-box img {
             transform: scale(1.05);
         }
 
-        /* Dark Horror / Chair Two Styling Mods */
-        .news-card.chair-two-card:hover {
-            border-color: rgba(180, 20, 20, 0.5);
-            box-shadow: 0 20px 40px rgba(180, 20, 20, 0.15);
-        }
-
-        .chair-two-overlay {
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(180deg, transparent 40%, rgba(10, 2, 2, 0.9) 100%);
-            display: flex;
-            align-items: flex-end;
-            padding: 20px;
-        }
-
-        .chair-two-badge {
-            background: rgba(180, 20, 20, 0.85);
-            color: #ffffff;
-            font-size: 11px;
-            font-weight: 800;
-            letter-spacing: 1.5px;
-            text-transform: uppercase;
-            padding: 4px 10px;
-            border-radius: 4px;
-            backdrop-filter: blur(4px);
-        }
-
-        /* Card Content Box */
-        .card-content {
-            padding: 28px 24px;
+        .rs-card-content {
+            padding: 24px;
             display: flex;
             flex-direction: column;
             flex-grow: 1;
+            justify-content: space-between;
         }
 
-        .card-category {
-            font-size: 12px;
+        .rs-card-category {
+            font-size: 11px;
             font-weight: 800;
             letter-spacing: 1.5px;
             text-transform: uppercase;
@@ -230,11 +270,11 @@
             margin-bottom: 10px;
         }
 
-        .news-card.chair-two-card .card-category {
-            color: #e63946;
+        .rs-card.horror-theme .rs-card-category {
+            color: #ff3366;
         }
 
-        .card-title {
+        .rs-card-title {
             font-size: 24px;
             font-weight: 800;
             line-height: 1.25;
@@ -243,7 +283,7 @@
             letter-spacing: -0.5px;
         }
 
-        .card-desc {
+        .rs-card-desc {
             font-size: 14px;
             color: #a0a5b1;
             line-height: 1.5;
@@ -251,7 +291,7 @@
             flex-grow: 1;
         }
 
-        .card-date {
+        .rs-card-date {
             font-size: 13px;
             color: #5f6368;
             font-weight: 600;
@@ -260,114 +300,409 @@
             margin-top: auto;
         }
 
-        /* Footer Section */
+        .coming-soon-badge {
+            display: inline-block;
+            background: rgba(255, 51, 102, 0.15);
+            color: #ff3366;
+            border: 1px solid rgba(255, 51, 102, 0.3);
+            font-size: 10px;
+            font-weight: 800;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            padding: 3px 8px;
+            border-radius: 4px;
+            margin-left: 8px;
+        }
+
+        /* Footer */
         footer {
-            width: 100%;
-            max-width: 1200px;
-            padding: 40px 20px;
+            background-color: #12131a;
             border-top: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 40px 40px 20px 40px;
+        }
+
+        .footer-content {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            color: #5f6368;
-            font-size: 14px;
-            z-index: 5;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-bottom: 25px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         }
 
-        footer a {
+        /* Footer Links setup on Left */
+        .footer-links {
+            display: flex;
+            gap: 24px;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
             color: #8f9296;
             text-decoration: none;
-            transition: color 0.2s;
+            font-size: 14px;
+            transition: color 0.2s ease;
+            cursor: pointer;
         }
 
-        footer a:hover {
+        .footer-links a:hover {
             color: rgb(253, 204, 54);
         }
 
+        /* Social Icons Circle Layout styling on Right */
+        .footer-socials {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .social-circle {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 44px;
+            height: 44px;
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 50%;
+            color: #c5c6c7;
+            text-decoration: none;
+            font-size: 18px;
+            transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+        }
+
+        /* Replicates Spotify's custom setup to inject the classic bird layout into the circular base */
+        .social-circle.classic-twitter i {
+            display: inline-block;
+            width: 18px;
+            height: 18px;
+            background-color: currentColor;
+            -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z'/%3E%3C/svg%3E") no-repeat center;
+            mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z'/%3E%3C/svg%3E") no-repeat center;
+        }
+
+        .social-circle:hover {
+            background-color: rgb(253, 204, 54);
+            color: #0b0c10;
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            text-align: center;
+            padding-top: 20px;
+            color: #5f6368;
+            font-size: 13px;
+            letter-spacing: 0.5px;
+        }
+
+        .creator-link {
+            color: rgb(253, 204, 54);
+            text-decoration: none;
+            font-weight: 600;
+            transition: text-decoration 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .creator-link:hover {
+            text-decoration: underline;
+        }
+
+        /* SERVER STATUS MODAL (The Popup Window) */
+        .status-modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(5px);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .status-box {
+            background-color: #12131a;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            width: 90%;
+            max-width: 500px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            animation: slideUp 0.3s ease;
+        }
+
+        @keyframes slideUp {
+            from { transform: translateY(20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .status-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            padding-bottom: 15px;
+        }
+
+        .status-header h2 {
+            font-size: 22px;
+            font-weight: 700;
+            color: rgb(253, 204, 54);
+        }
+
+        .close-btn {
+            background: none;
+            border: none;
+            color: #8f9296;
+            font-size: 24px;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+
+        .close-btn:hover {
+            color: #ffffff;
+        }
+
+        .status-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .status-item-static {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 16px;
+            border-radius: 8px;
+        }
+
+        .item-info h3 {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 2px;
+        }
+
+        .item-info p {
+            font-size: 12px;
+            color: #8f9296;
+            margin-bottom: 0;
+            text-align: left;
+        }
+
+        .status-indicator {
+            background: rgba(46, 204, 113, 0.15);
+            color: #2ecc71;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .view-more-link {
+            display: block;
+            text-align: center;
+            color: rgb(253, 204, 54);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+            margin-top: 15px;
+            transition: opacity 0.2s;
+        }
+
+        .view-more-link:hover {
+            opacity: 0.8;
+            text-decoration: underline;
+        }
+
+        /* Mobile Responsive adjustments */
         @media (max-width: 768px) {
-            .hero h1 { font-size: 36px; }
-            .cards-grid { grid-template-columns: 1fr; }
-            nav { flex-direction: column; gap: 16px; }
-            footer { flex-direction: column; gap: 16px; text-align: center; }
+            h1 { font-size: 40px; }
+            header { padding: 20px; }
+            .footer-content { flex-direction: column; gap: 25px; text-align: center; }
+            .footer-socials { justify-content: center; }
+            .footer-links { justify-content: center; gap: 15px; }
+            .rockstar-cards-row { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
 
-    <div class="glow-bg"></div>
-
-    <!-- Navigation Bar -->
-    <nav>
-        <a href="/" class="brand">Tyler's <span>Gamez</span></a>
-        <ul class="nav-links">
-            <li><a href="/">Home</a></li>
-            <li><a href="/games">Games</a></li>
-            <li><a href="/eastereggs">Secret Vault</a></li>
-        </ul>
-    </nav>
-
-    <!-- Main Home Hero Header -->
-    <header class="hero">
-        <h1>Welcome to the Archive</h1>
-        <p>Explore upcoming projects, development logs, and hidden entries from the Tyler's Gamez ecosystem.</p>
+    <header>
+        <a href="#" class="logo-container">
+            <img src="assets/icons/TylerGamezIconV2.png" alt="Tyler's Gamez Logo" class="nav-logo-img">
+            <div class="logo">Tyler's Gamez</div>
+        </a>
+        <nav class="nav-links">
+            <a href="games/">Our Games</a>
+            <a href="newswire/">Newswire</a>
+            <a href="/about-us/">About Us</a>
+        </nav>
     </header>
 
-    <!-- Featured News / Rockstar-Style Cards Section -->
-    <main class="featured-section">
-        <div class="section-header">
-            <span>Latest Announcements</span>
+    <main>
+        <div class="badge">Under Construction</div>
+        <h1>Something Big Is Cooking</h1>
+        <p>The ultimate hub for Tyler's Gamez is currently being built. Stay locked in.</p>
+        
+        <div class="hero-actions">
+            <a href="newswire/" class="newswire-btn">
+                <i class="fa-solid fa-newspaper"></i>
+                Read Newswire
+            </a>
+            <a href="https://github.com/TylerGamerYT/tyler-gamez-web" target="_blank" class="repo-btn">
+                <i class="fa-brands fa-github"></i>
+                View Source Code
+            </a>
         </div>
 
-        <div class="cards-grid">
+        <!-- ROCKSTAR GAMES STYLE FEATURED ANNOUNCEMENTS SECTION -->
+        <div class="rockstar-grid-container">
+            <div class="grid-section-title">
+                <span>Featured Announcements</span>
+            </div>
 
-            <!-- CARD 1: CHAIR TWO (Deep Lore / Horror Theme) -->
-            <a href="/games/chair-two" class="news-card chair-two-card">
-                <div class="card-image-wrapper">
-                    <!-- Replace this image link with your own Chair pic -->
-                    <img src="https://images.unsplash.com/photo-1580481072645-022f9a6d1270?q=80&w=1200&auto=format&fit=crop" alt="Chair Two Teaser">
-                    <div class="chair-two-overlay">
-                        <span class="chair-two-badge"><i class="fa-solid fa-skull"></i> Deep Lore Reveal</span>
-                    </div>
-                </div>
-                <div class="card-content">
-                    <div class="card-category">Tyler's Gamez // Horror Entry</div>
-                    <h2 class="card-title">Chair Two: The Unspoken Protocol</h2>
-                    <p class="card-desc">
-                        Some seats were never meant to be taken. Dive into the deep psychological horror behind the second seating, forgotten tapes, and redacted archive logs.
-                    </p>
-                    <div class="card-date">
-                        Target Release: Late 2026 / Early 2027
-                    </div>
-                </div>
-            </a>
+            <div class="rockstar-cards-row">
 
-            <!-- CARD 2: TYLER'S GAMEZ PLATFORM UPDATES -->
-            <a href="/eastereggs/" class="news-card">
-                <div class="card-image-wrapper">
-                    <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=1200&auto=format&fit=crop" alt="Secret Vault">
-                </div>
-                <div class="card-content">
-                    <div class="card-category">System Archive</div>
-                    <h2 class="card-title">Access The Secret Vault</h2>
-                    <p class="card-desc">
-                        Uncover command-line bypass terminals, co-founder developer nodes, hidden sub-layer clickers, and beta tester modules.
-                    </p>
-                    <div class="card-date">
-                        Updated July 2026
+                <!-- CHAIR TWO HORROR / LORE TEASER CARD -->
+                <a href="newswire/" class="rs-card horror-theme">
+                    <div class="rs-card-image-box">
+                        <img src="assets/games/chair/chair-banner.jpg" alt="Chair Two Horror Teaser" onerror="this.src='https://images.unsplash.com/photo-1580481072645-022f9a6d1270?q=80&w=1200&auto=format&fit=crop'">
                     </div>
-                </div>
-            </a>
+                    <div class="rs-card-content">
+                        <div>
+                            <div class="rs-card-category">
+                                Tyler's Gamez // Horror Archive
+                                <span class="coming-soon-badge">Coming Soon</span>
+                            </div>
+                            <h2 class="rs-card-title">Chair Two: The Unspoken Protocol</h2>
+                            <p class="rs-card-desc">
+                                Some seating is never meant to be occupied. Uncover the redacted audio logs, corrupted security feeds, and psychological horror buried within the second seat.
+                            </p>
+                        </div>
+                        <div class="rs-card-date">
+                            Target Release: 2026 / 2027
+                        </div>
+                    </div>
+                </a>
 
+                <!-- SYSTEM VAULT / NEWSWIRE CARD -->
+                <a href="eastereggs/" class="rs-card">
+                    <div class="rs-card-image-box">
+                        <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=1200&auto=format&fit=crop" alt="The Secret Vault">
+                    </div>
+                    <div class="rs-card-content">
+                        <div>
+                            <div class="rs-card-category">System Database</div>
+                            <h2 class="rs-card-title">Secret Vault & Terminal Entries</h2>
+                            <p class="rs-card-desc">
+                                Access hidden development portals, CLI hacking simulations, sub-layer matrices, and developer log archives directly from the secret vault.
+                            </p>
+                        </div>
+                        <div class="rs-card-date">
+                            Updated July 2026
+                        </div>
+                    </div>
+                </a>
+
+            </div>
         </div>
     </main>
 
-    <!-- Footer -->
+    <div id="statusModal" class="status-modal">
+        <div class="status-box">
+            <div class="status-header">
+                <h2>System Status</h2>
+                <button class="close-btn" onclick="closeStatus()">&times;</button>
+            </div>
+            <div class="status-list">
+                <div class="status-item-static">
+                    <div class="item-info">
+                        <h3>Bot1Hello System</h3>
+                        <p>Global Network</p>
+                    </div>
+                    <div class="status-indicator">Operational</div>
+                </div>
+                
+                <a href="status/" class="view-more-link">View Detailed Status Page →</a>
+            </div>
+        </div>
+    </div>
+
     <footer>
-        <p>&copy; 2026-2027 Tyler's Gamez. All rights reserved.</p>
-        <div>
-            <a href="/eastereggs"><i class="fa-solid fa-vault"></i> Secret Vault</a>
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="privacy-policy/">Privacy Policy</a>
+                <a href="terms-of-service/">Terms of Service</a>
+                <a href="#">Cookie Settings</a>
+                <a onclick="openStatus()">Server Status</a>
+                <a href="#">Contact Support</a>
+            </div>
+            
+            <div class="footer-socials">
+                <a href="https://www.instagram.com/TylerGamez0" target="_blank" class="social-circle" title="Instagram">
+                    <i class="fa-brands fa-instagram"></i>
+                </a>
+                <a href="https://x.com/TylerGamez" target="_blank" class="social-circle classic-twitter" title="Twitter">
+                    <i></i>
+                </a>
+                <a href="https://www.youtube.com/@TylerGamez0" target="_blank" class="social-circle" title="YouTube">
+                    <i class="fa-brands fa-youtube"></i>
+                </a>
+                <a href="https://www.facebook.com/TylerGamez0" target="_blank" class="social-circle" title="Facebook">
+                    <i class="fa-brands fa-facebook-f"></i>
+                </a>
+                <a href="https://www.tiktok.com/@tylergamez0" target="_blank" class="social-circle" title="TikTok">
+                    <i class="fa-brands fa-tiktok"></i>
+                </a>
+                <a href="https://discord.gg/2Df7eczTrb" target="_blank" class="social-circle" title="Discord">
+                    <i class="fa-brands fa-discord"></i>
+                </a>
+                <a href="https://www.twitch.tv/tylergamez0" target="_blank" class="social-circle" title="Twitch">
+                    <i class="fa-brands fa-twitch"></i>
+                </a>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <span>&copy; 2026 Tyler’s Gamez. All rights reserved.</span>
+            <span>|</span>
+            <span>Powered by <a href="https://github.com/TylerGamerYT" target="_blank" class="creator-link"><i class="fa-brands fa-github"></i> Tyler</a></span>
         </div>
     </footer>
 
+    <script>
+        const modal = document.getElementById("statusModal");
+
+        function openStatus() {
+            modal.style.display = "flex";
+        }
+
+        function closeStatus() {
+            modal.style.display = "none";
+        }
+
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
 </body>
 </html>
